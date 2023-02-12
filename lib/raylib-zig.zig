@@ -12,6 +12,10 @@ const rl = @This();
 pub const Vector2 = extern struct {
     x: f32,
     y: f32,
+
+    pub fn zero() Vector2 {
+        return .{ .x = 0, .y = 0 };
+    }
 };
 
 pub const Vector3 = extern struct {
