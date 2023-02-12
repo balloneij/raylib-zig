@@ -238,10 +238,10 @@ pub const Camera3D = extern struct {
 pub const Camera = Camera3D;
 
 pub const Camera2D = extern struct {
-    offset: Vector2,
-    target: Vector2,
-    rotation: f32,
-    zoom: f32,
+    offset: Vector2 = Vector2.zero(),
+    target: Vector2 = Vector2.zero(),
+    rotation: f32 = 0,
+    zoom: f32 = 1,
 
     pub fn Begin(self: Camera2D) void {
         rl.BeginMode2D(self);
