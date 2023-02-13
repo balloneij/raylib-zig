@@ -7,6 +7,9 @@
 
 pub usingnamespace @import("raylib-wa.zig");
 
+const std = @import("std");
+const math = std.math;
+const ray_math = @import("raylib-zig-math.zig");
 const rl = @This();
 
 pub const Vector2 = extern struct {
@@ -15,6 +18,45 @@ pub const Vector2 = extern struct {
 
     pub fn zero() Vector2 {
         return .{ .x = 0, .y = 0 };
+    }
+
+    pub fn isZero(v: Vector2) bool {
+        return v.x == 0 and v.y == 0;
+    }
+
+    pub fn add(v1: Vector2, v2: Vector2) Vector2 {
+        return ray_math.Vector2Add(v1, v2);
+    }
+
+    pub fn subtract(v1: Vector2, v2: Vector2) Vector2 {
+        return ray_math.Vector2Subtract(v1, v2);
+    }
+
+    pub fn scale(v: Vector2, scale_val: f32) Vector2 {
+        return ray_math.Vector2Scale(v, scale_val);
+    }
+
+    pub fn normalize(v: Vector2) Vector2 {
+        return ray_math.Vector2Normalize(v);
+    }
+
+    pub fn flip(v: Vector2) Vector2 {
+        return .{ .x = -v.x, .y = -v.y };
+    }
+
+    pub fn magnitude(v: Vector2) f32 {
+        return ray_math.Vector2Length(v);
+    }
+
+    pub fn dot(v1: Vector2, v2: Vector2) f32 {
+        return ray_math.Vector2DotProduct(v1, v2);
+    }
+
+    /// v1 should be thought of as the center of a unit circle
+    pub fn angle(v1: Vector2, v2: Vector2) f32 {
+        const x = v2.x - v1.x;
+        const y = v2.y - v1.y;
+        return math.atan2(f32, y, x);
     }
 };
 
