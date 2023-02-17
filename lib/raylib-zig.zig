@@ -58,6 +58,10 @@ pub const Vector2 = extern struct {
         const y = v2.y - v1.y;
         return math.atan2(f32, y, x);
     }
+
+    pub fn distance(v1: Vector2, v2: Vector2) f32 {
+        return ray_math.Vector2Distance(v1, v2);
+    }
 };
 
 pub const Vector3 = extern struct {
