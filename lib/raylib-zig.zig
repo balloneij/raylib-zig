@@ -62,6 +62,10 @@ pub const Vector2 = extern struct {
     pub fn distance(v1: Vector2, v2: Vector2) f32 {
         return ray_math.Vector2Distance(v1, v2);
     }
+
+    pub fn print(v: Vector2) void {
+        std.debug.print("x: {d}, y: {d}\n", .{ v.x, v.y });
+    }
 };
 
 pub const Vector3 = extern struct {
